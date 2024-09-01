@@ -18,6 +18,9 @@ julia>  stencilmat([-1 2 -1], 4)
 """
 function stencilmat(stencil, n)
     n1 = Integer(floor((length(stencil) + 1) / 2))
+    if n == 0
+        return sparse([], [], [])
+    end
     diags = []
     for i in eachindex(stencil)
         push!(diags, Pair(i - n1, stencil[i] * ones(n - abs(i - n1))))
@@ -45,6 +48,9 @@ julia>  stencilmat([-1 2 -1], 3, 2)
 """
 function stencilmat(stencil, m, n)
     n1 = Integer(floor((length(stencil) + 1) / 2))
+    if m == 0 || n == 0
+        return sparse([], [], [])
+    end
     diagsx = []
     diagsy = []
     for i in eachindex(stencil)
@@ -78,6 +84,9 @@ julia>  stencilmat([-1 2 -1], 2, 2, 2)
 """
 function stencilmat(stencil, m, n, l)
     n1 = Integer(floor((length(stencil) + 1) / 2))
+    if m == 0 || n == 0 || l == 0
+        return sparse([], [], [])
+    end
     diagsx = []
     diagsy = []
     diagsz = []
