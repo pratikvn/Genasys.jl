@@ -8,8 +8,12 @@ Returns a sparse matrix generated from a stencil.
 
 # Examples
 ```julia-repl
-julia>  laplacian(1, 1)
-sparse([1], [1], [4.0])
+julia>  stencilmat(4, [-1 2 -1])
+4×4 SparseArrays.SparseMatrixCSC{Float64, Int64} with 10 stored entries:
+  2.0  -1.0    ⋅     ⋅
+ -1.0   2.0  -1.0    ⋅
+   ⋅   -1.0   2.0  -1.0
+   ⋅     ⋅   -1.0   2.0
 ```
 """
 function stencilmat(n, stencil)
