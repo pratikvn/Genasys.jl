@@ -1,6 +1,7 @@
 using LinearAlgebra
 using SparseArrays
 
+
 """
     stencilmat(stencil, n)
 
@@ -57,9 +58,7 @@ function stencilmat(stencil, m, n)
         push!(diagsx, Pair(i - n1, stencil[i] * ones(m - abs(i - n1))))
         push!(diagsy, Pair(i - n1, stencil[i] * ones(n - abs(i - n1))))
     end
-    Ix = sparse(I, m, m)
-    Iy = sparse(I, n, n)
-    return kron(Iy, spdiagm(m, m, diagsx...)) + kron(spdiagm(n, n, diagsy...), Ix)
+    return grid2Dkron(spdiagm(m, m, diagsx...), spdiagm(n, n, diagsy...))
 end
 
 
@@ -95,8 +94,5 @@ function stencilmat(stencil, m, n, l)
         push!(diagsy, Pair(i - n1, stencil[i] * ones(n - abs(i - n1))))
         push!(diagsz, Pair(i - n1, stencil[i] * ones(l - abs(i - n1))))
     end
-    Ix = sparse(I, m, m)
-    Iy = sparse(I, n, n)
-    Iz = sparse(I, l, l)
-    return kron(Ix, kron(Iy, spdiagm(l, l, diagsz...))) + kron(Ix, kron(spdiagm(n, n, diagsy...), Iz)) + kron(spdiagm(n, n, diagsy...), kron(Ix, Iz))
+    return grid3Dkron(spdiagm(m, m, diagsx...), spdiagm(n, n, diagsy...), spdiagm(l, l, diagsz...))
 end
