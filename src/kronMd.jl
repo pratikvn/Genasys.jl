@@ -44,6 +44,7 @@ julia>  grid3Dkron(Ax, Ay, Az)
 ⎢⠀⠀⠈⠈⠱⣦⠢⡐⢄⎥
 ⎢⠀⠀⠀⠀⠈⠢⡻⢆⡀⎥
 ⎣⠀⠀⠀⠀⠀⠀⠈⠊⠛⎦
+```
 """
 function grid3Dkron(Ax, Ay, Az)
     Ix = sparse(I, size(Ax, 1), size(Ax, 2))
