@@ -4,6 +4,9 @@ using SparseArrays
 using Test
 
 @testset "Stencil tests" begin
+    @test Genasys.stencilmat([-1 2 -1], 0) == sparse([], [], [])
+    @test Genasys.stencilmat([-1 2 -1], 0, 0) == sparse([], [], [])
+    @test Genasys.stencilmat([-1 2 -1], 1, 0, 0) == sparse([], [], [])
     @test Genasys.stencilmat([-1 2 -1], 1) == sparse([1], [1], [2])
     @test Genasys.stencilmat([-1 2 -1], 3) == sparse([1, 2, 1, 2, 3, 2, 3], [1, 1, 2, 2, 2, 3, 3], [2, -1, -1, 2, -1, -1, 2])
     @test Genasys.stencilmat([-1 2 -1], 2, 1) == sparse([1, 2, 1, 2], [1, 1, 2, 2], [4, -1, -1, 4])
@@ -12,7 +15,6 @@ using Test
 end
 
 @testset "laplacian tests" begin
-    @test Genasys.laplacian(0, 0) == sparse([], [], [])
     @test Genasys.laplacian(1, 1) == sparse([1], [1], [4.0])
     @test Genasys.laplacian(1, 2) == sparse([1, 2, 1, 2], [1, 1, 2, 2], [4.0, -1.0, -1.0, 4.0], 2, 2)
     @test Genasys.laplacian(2, 1) == Genasys.laplacian(1, 2)
