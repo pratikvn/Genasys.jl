@@ -8,7 +8,7 @@ A general purpose sparse matrix generator that allows the user to generate diffe
 # Documentation
 
 [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://pratikvn.github.io/Genasys.jl/stable/)
-[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://pratikvn.github.io/Genasys.jl/dev/)o
+[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://pratikvn.github.io/Genasys.jl/dev/)
 
 # Installation
 
